@@ -3,7 +3,10 @@ from functions.bmi_calculator import calculate_bmi
 from utils.data_manager import DataManager
 
 st.title('BMI Rechner')
-data_manager = DataManager(fs_protocol='webdav', fs_root_folder="db_bmld")  # initialize data manager and load persistent data
+
+# initialize data manager. NOTE: The argument are not needed here 
+# as they were already set in the Start.py file
+data_manager = DataManager()  
 
 with st.form("BMI Eingabeformular"):
     # Get user input for height and weight
@@ -19,8 +22,8 @@ if submitted:
     st.write(f'Berechnet am: {result["timestamp"].strftime("%d.%m.%Y %H:%M:%S")}')
     st.write(f'Kategorie: {result["category"]}')
         
-    # Save BMI data
-    data_manager.append_record(session_state_key='bmi_df', record_dict=result)  # update data in session state and storage
+    # update data in session state and save to persistent storage
+    data_manager.append_record(session_state_key='data_df', record_dict=result)  
 
 
         
