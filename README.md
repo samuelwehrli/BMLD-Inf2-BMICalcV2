@@ -1,4 +1,5 @@
 # BMLD-Inf2-BMICalcV2
-Full blown example of BMI Calculator with user specific login
 
-Link to the app: https://bmi-rechner-v3.streamlit.app
+BMI Calculator which logs all Calculator calls
+
+Link to the app: https://bmi-rechner-v2.streamlit.app
