@@ -3,10 +3,7 @@ from functions.bmi_calculator import calculate_bmi
 from utils.data_manager import DataManager
 
 st.title('BMI Rechner')
-
-# initialize data manager. NOTE: The argument are not needed here 
-# as they were already set in the Start.py file
-data_manager = DataManager()  
+  
 
 with st.form("BMI Eingabeformular"):
     # Get user input for height and weight
@@ -23,7 +20,7 @@ if submitted:
     st.write(f'Kategorie: {result["category"]}')
         
     # update data in session state and save to persistent storage
-    data_manager.append_record(session_state_key='data_df', record_dict=result)  
+    DataManager().append_record(session_state_key='data_df', record_dict=result)  
 
 
         
