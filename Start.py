@@ -5,8 +5,15 @@ from utils.data_manager import DataManager
 
 # initialize data manager and load persistent data
 # data_manager = DataManager()  # for local use
-data_manager = DataManager(fs_protocol='webdav', fs_root_folder="App/BMLD-Inf2-BMICalcV2")  # switch drive 
-data_manager.load_app_data('bmi_df','bmi.csv', initial_value = pd.DataFrame(), parse_dates = ['timestamp'])
+data_manager = DataManager(fs_protocol='webdav', fs_root_folder="db_bmld")  # switch drive 
+
+# the session state key has to be bmi_df for the data to be loaded correctly
+data_manager.load_app_data(
+    session_state_key='bmi_df', 
+    file_name='database.csv', 
+    initial_value = pd.DataFrame(), 
+    parse_dates = ['timestamp']
+    )
 
 st.title('BMI Rechner')
 
