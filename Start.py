@@ -16,8 +16,7 @@ data_manager.load_app_data(
 
 st.title('BMI Rechner')
 
-name = st.session_state.get('name')
-st.markdown(f"✨ Hallo {name}! ✨")
+st.markdown(f"✨ Hallo! ✨")
 st.markdown("🏃 Die Anwendung ermöglicht es Ihnen, Ihren BMI zu berechnen und im Zeitverlauf zu verfolgen 📊")
         
 # Add some health advice

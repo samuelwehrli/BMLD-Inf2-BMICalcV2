@@ -4,7 +4,6 @@ from utils.data_manager import DataManager
 
 st.title('BMI Rechner')
   
-
 with st.form("BMI Eingabeformular"):
     # Get user input for height and weight
     height = st.number_input('Geben Sie Ihre Größe ein (in Meter)', min_value=0.1, max_value=3.0, value=1.7, step=0.01)
