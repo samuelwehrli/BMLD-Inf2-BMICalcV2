@@ -1,9 +1,9 @@
 import streamlit as st
-
 from functions.bmi_calculator import calculate_bmi
-from functions.bmi_data_manager import update_bmi_data
+from utils.data_manager import DataManager
 
 st.title('BMI Rechner')
+data_manager = DataManager(fs_protocol='webdav', fs_root_folder="db_bmld")  # initialize data manager and load persistent data
 
 with st.form("BMI Eingabeformular"):
     # Get user input for height and weight
@@ -14,14 +14,15 @@ with st.form("BMI Eingabeformular"):
     submitted = st.form_submit_button("Submit")
     
 if submitted:
-    
     result = calculate_bmi(height, weight)
-    
     st.write(f'Ihr BMI ist: {result["bmi"]}')
     st.write(f'Berechnet am: {result["timestamp"].strftime("%d.%m.%Y %H:%M:%S")}')
     st.write(f'Kategorie: {result["category"]}')
         
     # Save BMI data
-    update_bmi_data(result)  # update data in session state
+    data_manager.append_record(session_state_key='bmi_df', record_dict=result)  # update data in session state and storage
+
+
+        
 
         
