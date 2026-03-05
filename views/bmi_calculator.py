@@ -1,9 +1,11 @@
+import pandas as pd  # --- NEW CODE: add pandas to the imports ---
 import streamlit as st
+
+# Import the function to calculate the BMI
 from functions.bmi_calculator import calculate_bmi
-from utils.data_manager import DataManager
 
 st.title('BMI Rechner')
-  
+
 with st.form("BMI Eingabeformular"):
     # Get user input for height and weight
     height = st.number_input('Geben Sie Ihre Größe ein (in Meter)', min_value=0.1, max_value=3.0, value=1.7, step=0.01)
@@ -13,15 +15,16 @@ with st.form("BMI Eingabeformular"):
     submitted = st.form_submit_button("Submit")
     
 if submitted:
+    
     result = calculate_bmi(height, weight)
+    
     st.write(f'Ihr BMI ist: {result["bmi"]}')
     st.write(f'Berechnet am: {result["timestamp"].strftime("%d.%m.%Y %H:%M:%S")}')
     st.write(f'Kategorie: {result["category"]}')
-        
-    # update data in session state and save to persistent storage
-    DataManager().append_record(session_state_key='data_df', record_dict=result)  
 
-
+    # --- NEW CODE to update history in session state and display it ---
+    st.session_state['data_df'] = pd.concat([st.session_state['data_df'], pd.DataFrame([result])])
         
+# --- NEW CODE to display the history table ---
+st.dataframe(st.session_state['data_df'])
 
-        

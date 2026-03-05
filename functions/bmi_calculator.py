@@ -1,6 +1,7 @@
-from utils import helpers
+from datetime import datetime
+import pytz
 
-def calculate_bmi(height, weight, timezone='Europe/Zurich'):
+def calculate_bmi(height, weight):
     """
     Calculate BMI and return a dictionary with inputs, BMI, category, and timestamp.
 
@@ -26,7 +27,7 @@ def calculate_bmi(height, weight, timezone='Europe/Zurich'):
         category = 'Adipositas'
 
     return {
-        "timestamp": helpers.ch_now(),
+        "timestamp": datetime.now(pytz.timezone('Europe/Zurich')),  # Current swiss time
         "height": height,
         "weight": weight,
         "bmi": round(bmi, 1),

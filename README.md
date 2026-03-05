@@ -1,5 +1,9 @@
-# BMLD-Inf2-BMICalcV2
+# BMLD-Inf2-AppV0
 
-BMI Calculator which logs all Calculator calls
+Das leere Gerüst um eine App aufzubauen.
 
-Link to the app: https://bmi-rechner-v2.streamlit.app
+## Autor
+
+Samuel Wehrli (wehs@zhaw.ch)
+
+
