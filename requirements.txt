@@ -6,4 +6,3 @@ webdav4
 fsspec
 matplotlib
 numpy
-pytz
